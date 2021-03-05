@@ -386,7 +386,9 @@ class PoseDataset:
                 dy = j_y - grid.copy()[:, :, 0]
                 locref_map[..., j_id * 2 + 0] = dx * self.locref_scale
                 locref_map[..., j_id * 2 + 1] = dy * self.locref_scale
-        weights = self.compute_scmap_weights(scmap.shape, joint_id, data_item)
+
+        weights = scmap
+        #weights = self.compute_scmap_weights(scmap.shape, joint_id, data_item)
         return scmap, weights, locref_map, locref_mask
 
     def compute_scmap_weights(self, scmap_shape, joint_id, data_item):
@@ -441,5 +443,6 @@ class PoseDataset:
                 locref_map[mask, j_id * 2 + 0] = (dx * self.locref_scale)[mask]
                 locref_map[mask, j_id * 2 + 1] = (dy * self.locref_scale)[mask]
 
-        weights = self.compute_scmap_weights(scmap.shape, joint_id, data_item)
+        weights = scmap
+        #weights = self.compute_scmap_weights(scmap.shape, joint_id, data_item)
         return scmap, weights, locref_map, locref_mask
