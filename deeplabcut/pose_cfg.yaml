@@ -24,7 +24,7 @@ global_scale: 0.8
 ##############################################################################
 
 dataset_type: imgaug
-batch_size: 1
+batch_size: 500
 
 #Data loaders, i.e. with additional data augmentation options (as of 2.0.9+):
 #default with be with no extra dataloaders. Other options: 'tensorpack, deterministic'
@@ -126,3 +126,6 @@ alpha_r: 0.02
 display_iters: 1000
 # How often to save training snapshot
 save_iters: 50000
+
+# focused weights around the labelled face
+focused_weigths: true
