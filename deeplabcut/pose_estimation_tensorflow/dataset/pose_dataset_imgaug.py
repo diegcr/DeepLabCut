@@ -33,8 +33,6 @@ from deeplabcut.pose_estimation_tensorflow.dataset.pose_dataset import (
 )
 from deeplabcut.utils.auxfun_videos import imread
 
-import matplotlib.pyplot as plt
-
 class PoseDataset:
     def __init__(self, cfg):
         self.cfg = cfg
@@ -444,13 +442,6 @@ class PoseDataset:
                 locref_mask[mask, j_id * 2 + 1] = 1
                 locref_map[mask, j_id * 2 + 0] = (dx * self.locref_scale)[mask]
                 locref_map[mask, j_id * 2 + 1] = (dy * self.locref_scale)[mask]
-
-                if i == 0:
-                    print('person_id: ', person_id)
-                    print('coords:', coords[person_id])
-                    print('batch_item:', batch_item[person_id])
-
-                i+=1
 
         weights = scmap
         #weights = self.compute_scmap_weights(scmap.shape, joint_id, data_item)
